@@ -1,0 +1,25 @@
+/*
+name: Catppuccin Mocha Pink
+author: Catppuccin
+borders: false
+*/
+body {
+	--color-ui: #1e1e2e;
+	--color-back: #181825;
+	--color-dark: #11111b;
+	--color-border: #6c7086;
+	--color-selected: #45475a;
+	--color-elevated: #313244;
+	--color-button: #313244;
+	--color-bright_ui: #cdd6f4;
+	--color-accent: #f5c2e7;
+	--color-frame: #181825;
+	--color-text: #bac2de;
+	--color-light: #cdd6f4;
+	--color-accent_text: #1e1e2e;
+	--color-bright_ui_text: #1e1e2e;
+	--color-subtle_text: #a6adc8;
+	--color-grid: #a6adc8;
+	--color-wireframe: #a6adc8;
+	--color-checkerboard: #45475a;
+}

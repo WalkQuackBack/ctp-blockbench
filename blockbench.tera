@@ -1,31 +1,35 @@
 ---
 whiskers:
-  version: 2.0.0
-  matrix:
-    - flavor
-  filename: "themes/{{ flavor.identifier | capitalize }}.bbtheme"
+	version: ^2.5.1
+	matrix:
+		- flavor
+		- accent
+	hex_format: "#{{r}}{{g}}{{b}}"
+	filename: "themes/{{flavor.identifier}}/catppuccin-{{flavor.identifier}}-{{accent}}.bbtheme"
 ---
 {%- set palette = flavor.colors -%}
-{
-	"name": "{{ flavor.name }}",
-	"author": "Catppuccin",
-	"colors": {
-		"ui": "#{{ palette.base.hex }}",
-		"back": "#{{ palette.mantle.hex }}",
-		"dark": "#{{ palette.crust.hex }}",
-		"border": "{{ palette.overlay0.hex }}",
-		"selected": "#{{ palette.surface1.hex}}",
-		"button": "#{{ palette.surface0.hex }}",
-		"bright_ui": "#{{ palette.surface0.hex }}",
-		"accent": "#{{ palette.surface1.hex }}",
-		"frame": "#{{ palette.mantle.hex }}",
-		"text": "#{{ palette.text.hex }}",
-		"light": "#{{ palette.subtext0.hex }}",
-		"accent_text": "#{{ palette.lavender.hex }}",
-		"bright_ui_text": "#{{ palette.text.hex }}",
-		"subtle_text": "#{{ palette.subtext0.hex }}",
-		"grid": "#{{ palette.subtext0.hex }}",
-		"wireframe": "#{{ palette.subtext0.hex }}",
-		"checkerboard": "#{{ palette.surface1.hex }}"
-	}
+/*
+name: Catppuccin {{ flavor.name }} {{ accent | capitalize }}
+author: Catppuccin
+borders: false
+*/
+body {
+	--color-ui: {{ palette.base.hex }};
+	--color-back: {{ palette.mantle.hex }};
+	--color-dark: {{ palette.crust.hex }};
+	--color-border: {{ palette.overlay0.hex }};
+	--color-selected: {{ palette.surface1.hex }};
+	--color-elevated: {{ palette.surface0.hex }};
+	--color-button: {{ palette.surface0.hex }};
+	--color-bright_ui: {{ palette.text.hex }};
+	--color-accent: {{ flavor.colors[accent].hex }};
+	--color-frame: {{ palette.mantle.hex }};
+	--color-text: {{ palette.subtext1.hex }};
+	--color-light: {{ palette.text.hex }};
+	--color-accent_text: {{ palette.base.hex }};
+	--color-bright_ui_text: {{ palette.base.hex }};
+	--color-subtle_text: {{ palette.subtext0.hex }};
+	--color-grid: {{ palette.subtext0.hex }};
+	--color-wireframe: {{ palette.subtext0.hex }};
+	--color-checkerboard: {{ palette.surface1.hex }};
 }
