@@ -7,29 +7,28 @@ whiskers:
 	hex_format: "#{{r}}{{g}}{{b}}"
 	filename: "themes/{{flavor.identifier}}/catppuccin-{{flavor.identifier}}-{{accent}}.bbtheme"
 ---
-{%- set palette = flavor.colors -%}
 /*
 name: Catppuccin {{ flavor.name }} {{ accent | capitalize }}
 author: Catppuccin
 borders: false
 */
 body {
-	--color-ui: {{ palette.base.hex }};
-	--color-back: {{ palette.mantle.hex }};
-	--color-dark: {{ palette.crust.hex }};
-	--color-border: {{ palette.overlay0.hex }};
-	--color-selected: {{ palette.surface1.hex }};
-	--color-elevated: {{ palette.surface0.hex }};
-	--color-button: {{ palette.surface0.hex }};
-	--color-bright_ui: {{ palette.text.hex }};
+	--color-ui: {{ base.hex }};
+	--color-back: {{ mantle.hex }};
+	--color-dark: {{ crust.hex }};
+	--color-border: {{ overlay0.hex }};
+	--color-selected: {{ surface1.hex }};
+	--color-elevated: {{ surface0.hex }};
+	--color-button: {{ surface0.hex }};
+	--color-bright_ui: {{ text.hex }};
 	--color-accent: {{ flavor.colors[accent].hex }};
-	--color-frame: {{ palette.mantle.hex }};
-	--color-text: {{ palette.subtext1.hex }};
-	--color-light: {{ palette.text.hex }};
-	--color-accent_text: {{ palette.base.hex }};
-	--color-bright_ui_text: {{ palette.base.hex }};
-	--color-subtle_text: {{ palette.subtext0.hex }};
-	--color-grid: {{ palette.subtext0.hex }};
-	--color-wireframe: {{ palette.subtext0.hex }};
-	--color-checkerboard: {{ palette.surface1.hex }};
+	--color-frame: {{ mantle.hex }};
+	--color-text: {{ subtext1.hex }};
+	--color-light: {{ text.hex }};
+	--color-accent_text: {{ base.hex }};
+	--color-bright_ui_text: {{ base.hex }};
+	--color-subtle_text: {{ subtext0.hex }};
+	--color-grid: {{ subtext0.hex }};
+	--color-wireframe: {{ subtext0.hex }};
+	--color-checkerboard: {{ surface1.hex }};
 }
