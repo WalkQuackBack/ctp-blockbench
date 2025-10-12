@@ -1,11 +1,11 @@
 ---
 whiskers:
-	version: ^2.5.1
-	matrix:
-		- flavor
-		- accent
-	hex_format: "#{{r}}{{g}}{{b}}"
-	filename: "themes/{{flavor.identifier}}/catppuccin-{{flavor.identifier}}-{{accent}}.bbtheme"
+  version: ^2.5.1
+  matrix:
+    - flavor
+    - accent
+  filename: "themes/{{flavor.identifier}}/catppuccin-{{flavor.identifier}}-{{accent}}.bbtheme"
+  hex_format: "#{{r}}{{g}}{{b}}"
 ---
 /*
 name: Catppuccin {{ flavor.name }} {{ accent | capitalize }}
