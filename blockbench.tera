@@ -13,22 +13,22 @@ author: Catppuccin
 borders: false
 */
 body {
-	--color-ui: {{ base.hex }};
-	--color-back: {{ mantle.hex }};
-	--color-dark: {{ crust.hex }};
-	--color-border: {{ overlay0.hex }};
-	--color-selected: {{ surface1.hex }};
-	--color-elevated: {{ surface0.hex }};
-	--color-button: {{ surface0.hex }};
-	--color-bright_ui: {{ text.hex }};
-	--color-accent: {{ flavor.colors[accent].hex }};
-	--color-frame: {{ mantle.hex }};
-	--color-text: {{ subtext1.hex }};
-	--color-light: {{ text.hex }};
-	--color-accent_text: {{ base.hex }};
-	--color-bright_ui_text: {{ base.hex }};
-	--color-subtle_text: {{ subtext0.hex }};
-	--color-grid: {{ subtext0.hex }};
-	--color-wireframe: {{ subtext0.hex }};
-	--color-checkerboard: {{ surface1.hex }};
+  --color-ui: {{ base.hex }};
+  --color-back: {{ mantle.hex }};
+  --color-dark: {{ crust.hex }};
+  --color-border: {{ overlay0.hex }};
+  --color-selected: {{ surface1.hex }};
+  --color-elevated: {{ surface0.hex }};
+  --color-button: {{ surface0.hex }};
+  --color-bright_ui: {{ text.hex }};
+  --color-accent: {{ flavor.colors[accent].hex }};
+  --color-frame: {{ mantle.hex }};
+  --color-text: {{ subtext1.hex }};
+  --color-light: {{ text.hex }};
+  --color-accent_text: {{ base.hex }};
+  --color-bright_ui_text: {{ base.hex }};
+  --color-subtle_text: {{ subtext0.hex }};
+  --color-grid: {{ subtext0.hex }};
+  --color-wireframe: {{ subtext0.hex }};
+  --color-checkerboard: {{ surface1.hex }};
 }
