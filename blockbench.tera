@@ -1,34 +1,58 @@
 ---
 whiskers:
   version: ^2.5.1
-  matrix:
-    - flavor
-    - accent
-  filename: "themes/{{flavor.identifier}}/catppuccin-{{flavor.identifier}}-{{accent}}.bbtheme"
+  filename: "themes/catppuccin.bbtheme"
   hex_format: "#{{r}}{{g}}{{b}}"
 ---
 /*
-name: Catppuccin {{ flavor.name }} {{ accent | capitalize }}
+name: Catppuccin
 author: Catppuccin
 borders: false
+options:
+  flavor:
+    name: Flavor
+    options:
+      latte: Latte
+      frappe: Frappé
+      macchiato: Macchiato
+      mocha: Mocha
+  accent:
+    name: Accent
+    options:
+      {%- for flavorId, flavor in flavors %}{%- if loop.last %}
+      {%- for colorId, color in flavor.colors %}{%- if color.accent %}
+      {{ colorId }}: {{color.name}}
+      {%- endif %}{%- endfor %}
+      {%- endif %}{%- endfor %}
 */
-body {
-  --color-ui: {{ base.hex }};
-  --color-back: {{ mantle.hex }};
-  --color-dark: {{ crust.hex }};
-  --color-border: {{ overlay0.hex }};
-  --color-selected: {{ surface1.hex }};
-  --color-elevated: {{ surface0.hex }};
-  --color-button: {{ surface0.hex }};
-  --color-bright_ui: {{ text.hex }};
-  --color-accent: {{ flavor.colors[accent].hex }};
-  --color-frame: {{ mantle.hex }};
-  --color-text: {{ subtext1.hex }};
-  --color-light: {{ text.hex }};
-  --color-accent_text: {{ base.hex }};
-  --color-bright_ui_text: {{ base.hex }};
-  --color-subtle_text: {{ subtext0.hex }};
-  --color-grid: {{ subtext0.hex }};
-  --color-wireframe: {{ subtext0.hex }};
-  --color-checkerboard: {{ surface1.hex }};
+
+{%- for flavorId, flavor in flavors %}
+{% if loop.last %}body,{% endif %}
+[theme-flavor="{{ flavorId }}"] {
+  --color-ui: {{ flavor.colors.base.hex }};
+  --color-back: {{ flavor.colors.mantle.hex }};
+  --color-dark: {{ flavor.colors.crust.hex }};
+  --color-border: {{ flavor.colors.overlay0.hex }};
+  --color-selected: {{ flavor.colors.surface1.hex }};
+  --color-elevated: {{ flavor.colors.surface0.hex }};
+  --color-button: {{ flavor.colors.surface0.hex }};
+  --color-bright_ui: {{ flavor.colors.text.hex }};
+  --color-frame: {{ flavor.colors.mantle.hex }};
+  --color-text: {{ flavor.colors.subtext1.hex }};
+  --color-light: {{ flavor.colors.text.hex }};
+  --color-accent_text: {{ flavor.colors.base.hex }};
+  --color-bright_ui_text: {{ flavor.colors.base.hex }};
+  --color-subtle_text: {{ flavor.colors.subtext0.hex }};
+  --color-grid: {{ flavor.colors.subtext0.hex }};
+  --color-wireframe: {{ flavor.colors.subtext0.hex }};
+  --color-checkerboard: {{ flavor.colors.surface1.hex }};
+  {%- if loop.last %}
+  --color-accent: {{ flavor.colors.mauve.hex }};
+  {%- endif %}
 }
+{%- for colorId, color in flavor.colors %}{% if color.accent %}
+[theme-flavor="{{ flavorId }}"][theme-accent="{{ colorId }}"] {
+  --color-accent: {{ color.hex }};
+}
+{%- endif %}{%- endfor %}
+{%- endfor %}
