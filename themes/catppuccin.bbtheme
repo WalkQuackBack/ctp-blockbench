@@ -1,6 +1,7 @@
 /*
 name: Catppuccin
 author: Catppuccin
+version: 1.0
 borders: false
 options:
   flavor:
@@ -29,6 +30,50 @@ options:
       lavender: Lavender
 */
 
+body {
+	--color-ui: #1e1e2e;
+  --color-back: #181825;
+  --color-dark: #11111b;
+  --color-border: #6c7086;
+  --color-selected: #45475a;
+  --color-elevated: #313244;
+  --color-button: #313244;
+  --color-bright_ui: #cdd6f4;
+  --color-frame: #181825;
+  --color-text: #bac2de;
+  --color-light: #cdd6f4;
+  --color-accent_text: #1e1e2e;
+  --color-bright_ui_text: #1e1e2e;
+  --color-subtle_text: #a6adc8;
+  --color-grid: #a6adc8;
+  --color-wireframe: #a6adc8;
+  --color-checkerboard: #45475a;
+
+  --color-accent: #cba6f7;
+}
+
+/* Theme preview can only be accurate when theme selected,
+  limitation with upstream */
+[theme_id="catppuccin"].theme_preview {
+  --color-ui: inherit !important;
+  --color-back: inherit !important;
+  --color-dark: inherit !important;
+  --color-border: inherit !important;
+  --color-selected: inherit !important;
+  --color-elevated: inherit !important;
+  --color-button: inherit !important;
+  --color-bright_ui: inherit !important;
+  --color-frame: inherit !important;
+  --color-text: inherit !important;
+  --color-light: inherit !important;
+  --color-accent_text: inherit !important;
+  --color-bright_ui_text: inherit !important;
+  --color-subtle_text: inherit !important;
+  --color-grid: inherit !important;
+  --color-wireframe: inherit !important;
+  --color-checkerboard: inherit !important;
+  --color-accent: inherit !important;
+}
 [theme-flavor="latte"] {
   --color-ui: #eff1f5;
   --color-back: #e6e9ef;
@@ -90,7 +135,6 @@ options:
 [theme-flavor="latte"][theme-accent="lavender"] {
   --color-accent: #7287fd;
 }
-
 [theme-flavor="frappe"] {
   --color-ui: #303446;
   --color-back: #292c3c;
@@ -152,7 +196,6 @@ options:
 [theme-flavor="frappe"][theme-accent="lavender"] {
   --color-accent: #babbf1;
 }
-
 [theme-flavor="macchiato"] {
   --color-ui: #24273a;
   --color-back: #1e2030;
@@ -214,7 +257,6 @@ options:
 [theme-flavor="macchiato"][theme-accent="lavender"] {
   --color-accent: #b7bdf8;
 }
-body,
 [theme-flavor="mocha"] {
   --color-ui: #1e1e2e;
   --color-back: #181825;
@@ -233,7 +275,6 @@ body,
   --color-grid: #a6adc8;
   --color-wireframe: #a6adc8;
   --color-checkerboard: #45475a;
-  --color-accent: #cba6f7;
 }
 [theme-flavor="mocha"][theme-accent="rosewater"] {
   --color-accent: #f5e0dc;

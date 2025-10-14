@@ -7,6 +7,7 @@ whiskers:
 /*
 name: Catppuccin
 author: Catppuccin
+version: 1.0
 borders: false
 options:
   flavor:
@@ -26,8 +27,54 @@ options:
       {%- endif %}{%- endfor %}
 */
 
+{%- set_global default_flavor = flavors['mocha'].colors %}
+
+body {
+	--color-ui: {{ default_flavor.base.hex }};
+  --color-back: {{ default_flavor.mantle.hex }};
+  --color-dark: {{ default_flavor.crust.hex }};
+  --color-border: {{ default_flavor.overlay0.hex }};
+  --color-selected: {{ default_flavor.surface1.hex }};
+  --color-elevated: {{ default_flavor.surface0.hex }};
+  --color-button: {{ default_flavor.surface0.hex }};
+  --color-bright_ui: {{ default_flavor.text.hex }};
+  --color-frame: {{ default_flavor.mantle.hex }};
+  --color-text: {{ default_flavor.subtext1.hex }};
+  --color-light: {{ default_flavor.text.hex }};
+  --color-accent_text: {{ default_flavor.base.hex }};
+  --color-bright_ui_text: {{ default_flavor.base.hex }};
+  --color-subtle_text: {{ default_flavor.subtext0.hex }};
+  --color-grid: {{ default_flavor.subtext0.hex }};
+  --color-wireframe: {{ default_flavor.subtext0.hex }};
+  --color-checkerboard: {{ default_flavor.surface1.hex }};
+
+  --color-accent: {{ default_flavor.mauve.hex }};
+}
+
+/* Theme preview can only be accurate when theme selected,
+  limitation with upstream */
+[theme_id="catppuccin"].theme_preview {
+  --color-ui: inherit !important;
+  --color-back: inherit !important;
+  --color-dark: inherit !important;
+  --color-border: inherit !important;
+  --color-selected: inherit !important;
+  --color-elevated: inherit !important;
+  --color-button: inherit !important;
+  --color-bright_ui: inherit !important;
+  --color-frame: inherit !important;
+  --color-text: inherit !important;
+  --color-light: inherit !important;
+  --color-accent_text: inherit !important;
+  --color-bright_ui_text: inherit !important;
+  --color-subtle_text: inherit !important;
+  --color-grid: inherit !important;
+  --color-wireframe: inherit !important;
+  --color-checkerboard: inherit !important;
+  --color-accent: inherit !important;
+}
+
 {%- for flavorId, flavor in flavors %}
-{% if loop.last %}body,{% endif %}
 [theme-flavor="{{ flavorId }}"] {
   --color-ui: {{ flavor.colors.base.hex }};
   --color-back: {{ flavor.colors.mantle.hex }};
@@ -46,9 +93,6 @@ options:
   --color-grid: {{ flavor.colors.subtext0.hex }};
   --color-wireframe: {{ flavor.colors.subtext0.hex }};
   --color-checkerboard: {{ flavor.colors.surface1.hex }};
-  {%- if loop.last %}
-  --color-accent: {{ flavor.colors.mauve.hex }};
-  {%- endif %}
 }
 {%- for colorId, color in flavor.colors %}{% if color.accent %}
 [theme-flavor="{{ flavorId }}"][theme-accent="{{ colorId }}"] {
