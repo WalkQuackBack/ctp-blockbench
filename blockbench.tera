@@ -28,6 +28,7 @@ options:
 */
 
 {%- set_global default_flavor = flavors['mocha'].colors %}
+{%- set_global brightui = flavors['latte'].colors %}
 
 body {
 	--color-ui: {{ default_flavor.base.hex }};
@@ -37,23 +38,45 @@ body {
   --color-selected: {{ default_flavor.surface1.hex }};
   --color-elevated: {{ default_flavor.surface0.hex }};
   --color-button: {{ default_flavor.surface0.hex }};
-  --color-bright_ui: {{ default_flavor.text.hex }};
+  --color-bright_ui: {{ brightui.base.hex }};
   --color-frame: {{ default_flavor.mantle.hex }};
   --color-text: {{ default_flavor.subtext1.hex }};
   --color-light: {{ default_flavor.text.hex }};
   --color-accent_text: {{ default_flavor.base.hex }};
-  --color-bright_ui_text: {{ default_flavor.base.hex }};
+  --color-bright_ui_text: {{ brightui.text.hex }};
   --color-subtle_text: {{ default_flavor.subtext0.hex }};
   --color-grid: {{ default_flavor.subtext0.hex }};
   --color-wireframe: {{ default_flavor.subtext0.hex }};
   --color-checkerboard: {{ default_flavor.surface1.hex }};
 
   --color-accent: {{ default_flavor.mauve.hex }};
+
+  --color-menu_separator: {{ default_flavor.overlay0.hex }};
+  --color-guidelines: {{ default_flavor.subtext0 | mod(opacity=0.7) | get(key="hex") }};
+  
+  --color-close: {{ default_flavor.red.hex }};
+  --color-confirm: {{ default_flavor.green.hex }};
+  --color-error: {{ default_flavor.red.hex }};
+  --color-warning: {{ default_flavor.yellow.hex }};
+
+  --color-stream: {{ default_flavor.lavender.hex }};
+
+  --color-axis-x: {{ default_flavor.red.hex }};
+  --color-axis-y: {{ default_flavor.green.hex }};
+  --color-axis-z: {{ default_flavor.blue.hex }};
+  --color-axis-w: {{ default_flavor.yellow.hex }};
+
+  --color-axis-u: {{ default_flavor.sky.hex }};
+  --color-axis-v: {{ default_flavor.pink.hex }};
+
+  --color-spline-handle-mirrored: {{ default_flavor.red.hex }};
+  --color-spline-handle-aligned: {{ default_flavor.yellow.hex }};
+  --color-spline-handle-free: {{ default_flavor.green.hex }};
 }
 
 /* Theme preview can only be accurate when theme selected,
   limitation with upstream */
-[theme_id="catppuccin"].theme_preview {
+[theme_id^="catppuccin"].theme_preview {
   --color-ui: inherit !important;
   --color-back: inherit !important;
   --color-dark: inherit !important;
@@ -76,23 +99,46 @@ body {
 
 {%- for flavorId, flavor in flavors %}
 [theme-flavor="{{ flavorId }}"] {
-  --color-ui: {{ flavor.colors.base.hex }};
-  --color-back: {{ flavor.colors.mantle.hex }};
-  --color-dark: {{ flavor.colors.crust.hex }};
-  --color-border: {{ flavor.colors.overlay0.hex }};
-  --color-selected: {{ flavor.colors.surface1.hex }};
-  --color-elevated: {{ flavor.colors.surface0.hex }};
-  --color-button: {{ flavor.colors.surface0.hex }};
-  --color-bright_ui: {{ flavor.colors.text.hex }};
-  --color-frame: {{ flavor.colors.mantle.hex }};
-  --color-text: {{ flavor.colors.subtext1.hex }};
-  --color-light: {{ flavor.colors.text.hex }};
-  --color-accent_text: {{ flavor.colors.base.hex }};
-  --color-bright_ui_text: {{ flavor.colors.base.hex }};
-  --color-subtle_text: {{ flavor.colors.subtext0.hex }};
-  --color-grid: {{ flavor.colors.subtext0.hex }};
-  --color-wireframe: {{ flavor.colors.subtext0.hex }};
-  --color-checkerboard: {{ flavor.colors.surface1.hex }};
+  {%- set_global colors = flavor.colors %}
+  --color-ui: {{ colors.base.hex }};
+  --color-back: {{ colors.mantle.hex }};
+  --color-dark: {{ colors.crust.hex }};
+  --color-border: {{ colors.overlay0.hex }};
+  --color-selected: {{ colors.surface1.hex }};
+  --color-elevated: {{ colors.surface0.hex }};
+  --color-button: {{ colors.surface0.hex }};
+  --color-bright_ui: {{ brightui.base.hex }};
+  --color-frame: {{ colors.mantle.hex }};
+  --color-text: {{ colors.subtext1.hex }};
+  --color-light: {{ colors.text.hex }};
+  --color-accent_text: {{ colors.base.hex }};
+  --color-bright_ui_text: {{ brightui.text.hex }};
+  --color-subtle_text: {{ colors.subtext0.hex }};
+  --color-grid: {{ colors.subtext0.hex }};
+  --color-wireframe: {{ colors.subtext0.hex }};
+  --color-checkerboard: {{ colors.surface1.hex }};
+
+  --color-menu_separator: {{ colors.overlay0.hex }};
+  --color-guidelines: {{ colors.subtext0 | mod(opacity=0.7) | get(key="hex") }};
+  
+  --color-close: {{ colors.red.hex }};
+  --color-confirm: {{ colors.green.hex }};
+  --color-error: {{ colors.red.hex }};
+  --color-warning: {{ colors.yellow.hex }};
+
+  --color-stream: {{ colors.lavender.hex }};
+
+  --color-axis-x: {{ colors.red.hex }};
+  --color-axis-y: {{ colors.green.hex }};
+  --color-axis-z: {{ colors.blue.hex }};
+  --color-axis-w: {{ colors.yellow.hex }};
+
+  --color-axis-u: {{ colors.sky.hex }};
+  --color-axis-v: {{ colors.pink.hex }};
+
+  --color-spline-handle-mirrored: {{ colors.red.hex }};
+  --color-spline-handle-aligned: {{ colors.yellow.hex }};
+  --color-spline-handle-free: {{ colors.green.hex }};
 }
 {%- for colorId, color in flavor.colors %}{% if color.accent %}
 [theme-flavor="{{ flavorId }}"][theme-accent="{{ colorId }}"] {
@@ -100,3 +146,14 @@ body {
 }
 {%- endif %}{%- endfor %}
 {%- endfor %}
+#preview {
+  --color-axis-x: inherit;
+  --color-axis-y: inherit;
+  --color-axis-z: inherit;
+  --color-axis-u: inherit;
+  --color-axis-v: inherit;
+  --color-axis-w: inherit;
+}
+[style^="background-color: var(--color-stream)"] {
+  color: {{ colors.base.hex }} !important;
+}
